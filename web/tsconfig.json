@@ -17,7 +17,7 @@
         "../.redwood/types/mirror/web/src/*"
       ],
       "types/*": ["./types/*"],
-      "@/components/*": ["./src/components/*"],
+      "@/components/*": ["src/components/*"],
       "@/styled": ["config/stitches.config.js"],
     },
     "typeRoots": ["../node_modules/@types", "./node_modules/@types"],

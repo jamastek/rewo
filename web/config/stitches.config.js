@@ -1,13 +1,35 @@
 import { createCss } from '@stitches/react'
+import {
+  gray,
+  blue,
+  red,
+  green,
+  tomato,
+  grayDark,
+  tomatoDark,
+  blueDark,
+  redDark,
+  greenDark,
+} from '@radix-ui/colors'
 
-export const { styled, css } = createCss({
+export const { styled, css, getCssString, theme } = createCss({
   theme: {
     colors: {
-      gray500: 'hsl(206,10%,76%)',
-      blue500: 'hsl(206,100%,50%)',
-      purple500: 'hsl(252,78%,60%)',
-      green500: 'hsl(148,60%,60%)',
-      red500: 'hsl(352,100%,62%)',
+      ...gray,
+      ...blue,
+      ...red,
+      ...green,
+      ...tomato,
     },
+  },
+})
+
+export const darkTheme = theme({
+  colors: {
+    ...grayDark,
+    ...blueDark,
+    ...redDark,
+    ...greenDark,
+    ...tomatoDark,
   },
 })

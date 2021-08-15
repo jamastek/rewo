@@ -2,6 +2,7 @@
 const path = require('path')
 
 const aliases = {
+  '@/components': path.resolve(__dirname, '../src/components'),
   '@/styled': path.resolve(__dirname, './stitches.config.js'),
 }
 

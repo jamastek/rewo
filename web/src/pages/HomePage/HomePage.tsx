@@ -1,4 +1,9 @@
 import { Link, routes } from '@redwoodjs/router'
+import { styled } from '@/styled'
+
+const Button = styled('button', {
+  background: 'red',
+})
 
 const HomePage = () => {
   return (
@@ -11,6 +16,7 @@ const HomePage = () => {
         My default route is named <code>home</code>, link to me with `
         <Link to={routes.home()}>Home</Link>`
       </p>
+      <Button>test</Button>
     </>
   )
 }

@@ -1,7 +1,11 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import { Form, TextField, Submit } from '@redwoodjs/forms'
 
 const RegisterPage = () => {
+  const handleSubmit = (data) => {
+    console.log(data)
+  }
   return (
     <>
       <MetaTags
@@ -31,14 +35,19 @@ const RegisterPage = () => {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <Form
+            onSubmit={handleSubmit}
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+          >
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
-                <input
+                <TextField
                   id="email-address"
                   name="email"
                   type="email"
@@ -52,7 +61,7 @@ const RegisterPage = () => {
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
-                <input
+                <TextField
                   id="password"
                   name="password"
                   type="password"
@@ -113,7 +122,7 @@ const RegisterPage = () => {
                 Sign in
               </button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>

@@ -13,6 +13,8 @@ import BaseLayout from './layouts/BaseLayout/BaseLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/register" page={RegisterPage} name="register" />
+      <Route path="/login" page={LoginPage} name="login" />
       <Set wrap={BaseLayout}>
         <Route path="/" page={HomePage} name="home" />
         <Route notfound page={NotFoundPage} />

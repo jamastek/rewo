@@ -1,14 +1,11 @@
 import { Head } from '@redwoodjs/web'
-import { getCssString } from '@/styled'
+import { getCssText } from '@/styled'
 
 const Seo = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>
-      <style
-        id="stitches"
-        dangerouslySetInnerHTML={{ __html: getCssString() }}
-      />
+      <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
     </Head>
   )
 }

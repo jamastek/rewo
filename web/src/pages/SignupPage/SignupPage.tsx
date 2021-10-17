@@ -5,15 +5,15 @@ import {
   Label,
   TextField,
   PasswordField,
-  Submit,
   FieldError,
+  Submit,
 } from '@redwoodjs/forms'
 import { useAuth } from '@redwoodjs/auth'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 import { useEffect } from 'react'
 
-const LoginPage = () => {
-  const { isAuthenticated, logIn } = useAuth()
+const SignupPage = () => {
+  const { isAuthenticated, signUp } = useAuth()
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -21,20 +21,22 @@ const LoginPage = () => {
     }
   }, [isAuthenticated])
 
+  // focus on email box on page load
   const usernameRef = useRef<HTMLInputElement>()
   useEffect(() => {
     usernameRef.current.focus()
   }, [])
 
   const onSubmit = async (data) => {
-    const response = await logIn({ ...data })
+    const response = await signUp({ ...data })
 
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
       toast.error(response.error)
     } else {
-      toast.success('Welcome back!')
+      // user is signed in automatically
+      toast.success('Welcome!')
     }
   }
 
@@ -44,7 +46,7 @@ const LoginPage = () => {
       <div className="rw-scaffold rw-login-container">
         <div className="rw-segment">
           <header className="rw-segment-header">
-            <h2 className="rw-heading rw-heading-secondary">Login</h2>
+            <h2 className="rw-heading rw-heading-secondary">Signup</h2>
           </header>
 
           <div className="rw-segment-main">
@@ -70,7 +72,6 @@ const LoginPage = () => {
                       },
                     }}
                   />
-
                   <FieldError name="username" className="rw-field-error" />
                 </div>
 
@@ -94,21 +95,20 @@ const LoginPage = () => {
                       },
                     }}
                   />
-
                   <FieldError name="password" className="rw-field-error" />
                 </div>
 
                 <div className="rw-button-group">
-                  <Submit className="rw-button rw-button-blue">Login</Submit>
+                  <Submit className="rw-button rw-button-blue">Sign Up</Submit>
                 </div>
               </Form>
             </div>
           </div>
         </div>
         <div className="rw-login-link">
-          <span>Don&apos;t have an account?</span>{' '}
-          <Link to={routes.signup()} className="rw-link">
-            Sign up!
+          <span>Already have an account?</span>{' '}
+          <Link to={routes.login()} className="rw-link">
+            Log in!
           </Link>
         </div>
       </div>
@@ -116,4 +116,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignupPage

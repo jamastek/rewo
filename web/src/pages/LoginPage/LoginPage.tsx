@@ -1,4 +1,4 @@
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes, Redirect } from '@redwoodjs/router'
 import { useRef } from 'react'
 import {
   Form,
@@ -16,9 +16,10 @@ const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate(routes.home())
-    }
+    console.log(isAuthenticated)
+    // if (isAuthenticated) {
+    //   navigate(routes.home())
+    // }
   }, [isAuthenticated])
 
   const usernameRef = useRef<HTMLInputElement>()
@@ -38,7 +39,14 @@ const LoginPage = () => {
     }
   }
 
-  return (
+  // if (isAuthenticated) {
+  //   navigate(routes.home())
+  //   return <div></div>
+  // }
+
+  return isAuthenticated ? (
+    <Redirect to={routes.home()} />
+  ) : (
     <main className="rw-main">
       <Toaster />
       <div className="rw-scaffold rw-login-container">

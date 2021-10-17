@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.7",
-    "@redwoodjs/forms": "^0.37.3",
-    "@redwoodjs/router": "^0.37.3",
-    "@redwoodjs/web": "^0.37.3",
+    "@redwoodjs/auth": "^0.37.4",
+    "@redwoodjs/forms": "^0.37.4",
+    "@redwoodjs/router": "^0.37.4",
+    "@redwoodjs/web": "^0.37.4",
     "@stitches/react": "^1.0.0",
     "framer-motion": "^4.1.17",
     "prop-types": "15.7.2",

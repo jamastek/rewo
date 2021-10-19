@@ -12,12 +12,14 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 // TODO: Please remove the following example:
 model User {
-  id             Int     @id @default(autoincrement())
-  firstName      String?
-  lastName       String?
-  email          String  @unique
-  hashedPassword String
-  salt           String
+  id           Int      @id @default(autoincrement())
+  firstName    String?
+  lastName     String?
+  username     String?  @unique
+  email        String   @unique
+  password     String
+  refreshToken String?
+  createAt     DateTime @default(now())
 }
 
 model Post {

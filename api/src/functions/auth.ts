@@ -1,8 +1,8 @@
 import { db } from 'src/lib/db'
 import { DbAuthHandler } from '@redwoodjs/api'
+import bcrypt from 'bcryptjs'
 
 export const handler = async (event, context) => {
-
   const loginOptions = {
     // login.handler() is called after finding the user that matches the
     // username/password provided at login, but before actually considering them
@@ -48,13 +48,12 @@ export const handler = async (event, context) => {
     //
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
-    handler: ({ username, hashedPassword, salt, userAttributes }) => {
+    handler: async ({ email, password, userAttributes }) => {
+      const hashedPassword = await bcrypt.hash(password, 12)
       return db.user.create({
         data: {
-          email: username,
-          hashedPassword: hashedPassword,
-          salt: salt,
-          // name: userAttributes.name
+          email: email,
+          password: hashedPassword,
         },
       })
     },
@@ -77,12 +76,11 @@ export const handler = async (event, context) => {
     // A map of what dbAuth calls a field to what your database calls it.
     // `id` is whatever column you use to uniquely identify a user (probably
     // something like `id` or `userId` or even `email`)
-    authFields: {
-      id: 'id',
-      username: 'email',
-      hashedPassword: 'hashedPassword',
-      salt: 'salt',
-    },
+    // authFields: {
+    //   id: 'id',
+    //   email: 'email',
+    //   password: 'password',
+    // },
 
     login: loginOptions,
     signup: signupOptions,
